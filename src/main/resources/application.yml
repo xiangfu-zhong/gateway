@@ -2,15 +2,14 @@ server:
   port: 8084
 spring:
   application:
-    name: gate9527
+    name: gateway
   cloud:
     gateway:
       routes:
         - id: order-server #路由的ID，没有固定规则但要求唯一，建议配合服务名
           uri: http://localhost:8082   #匹配后提供服务的路由地址
           predicates:
-            #- Path=/orderTestContraller/**   #断言,路径相匹配的进行路由
-            - Host=**.kubernetes-node1
+            - Path=/orderTestContraller/**   #断言,路径相匹配的进行路由
         - id: product-server #路由的ID，没有固定规则但要求唯一，建议配合服务名
           uri: http://localhost:8083   #匹配后提供服务的路由地址
           predicates:
@@ -23,6 +22,6 @@ eureka:
     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://kubernetes-node1:8761/eureka,http://jenkins-server:8900/eureka,http://work2:8901/eureka
+      defaultZone: http://localhost:8761/eureka
 
 
