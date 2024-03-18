@@ -1,0 +1,22 @@
+eureka:
+  client:
+    #false表示不向注册中心注册自己。
+    registerWithEureka: true
+    #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://eureka-0.eureka:8761/eureka/,http://eureka-1.eureka:8761/eureka/,http://eureka-2.eureka:8761/eureka/
+
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: order-server #路由的ID，没有固定规则但要求唯一，建议配合服务名
+          uri: lb://ORDER-SERVER   #匹配后提供服务的路由地址
+          predicates:
+            - Path=/order/orderTestContraller/**   #断言,路径相匹配的进行路由
+        - id: product-server #路由的ID，没有固定规则但要求唯一，建议配合服务名
+          uri: lb://PRODUCT-SERVER   #匹配后提供服务的路由地址
+          predicates:
+            - Path=/productTestContraller/**   #断言,路径相匹配的进行路由
