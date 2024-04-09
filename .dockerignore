@@ -1,0 +1,24 @@
+# 排除所有 .class 文件
+*.class
+# 排除所有 .log 文件
+*.log
+# 排除所有 .project 文件
+*.project
+# 排除所有 .settings 目录
+.settings/
+# 排除所有 target 目录
+target/
+# 排除所有 .git 目录
+.git/
+# 排除所有 .idea 目录
+.idea/
+# 排除所有 .DS_Store 文件（如果在 MacOS 上）
+.DS_Store
+# 排除所有 .gitignore 文件
+.gitignore
+# 排除所有 .dockerignore 文件
+.dockerignore
+# 排除所有 LICENSE 文件
+LICENSE
+# 排除所有 README.md 文件
+README.md
